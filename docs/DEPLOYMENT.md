@@ -18,6 +18,10 @@
 
 No activar HSTS hasta confirmar HTTPS. Django habilita cookies Secure, HSTS y redirección SSL con `DEBUG=false`.
 
+Next conserva los slash finales de DRF mediante `skipTrailingSlashRedirect`. No retirarlo: Next y Django aplicarían normalizaciones opuestas y generarían un bucle 308/301 en `/api/*`.
+
+La refracción avanzada de `liquid-glass-react` queda desactivada por defecto en producción (`NEXT_PUBLIC_ADVANCED_GLASS=false`). El fallback mantiene glass, blur, bordes y profundidad sin alterar el tamaño de paneles financieros.
+
 ## Actualización
 
 ```bash

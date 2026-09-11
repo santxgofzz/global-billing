@@ -147,7 +147,8 @@ h1 { margin: 7px 0 0; font: 600 clamp(24px, 2.4vw, 34px)/1.1 var(--font-display)
 .button.secondary { color: var(--text-primary); background: rgba(255,255,255,.04); border-color: var(--glass-border); }
 .button.danger { color: var(--danger); background: rgba(255,107,130,.09); border-color: rgba(255,107,130,.2); }
 .global-glass-fallback { border: 1px solid var(--glass-border); background: var(--glass-surface); box-shadow: inset 0 1px var(--glass-highlight), var(--shadow-panel); backdrop-filter: blur(22px) saturate(128%); overflow: hidden; }
-.global-glass-liquid { width: 100%; height: 100%; }
+.global-glass-liquid { width: 100%; }
+.global-glass-content { width: 100%; }
 .input { width: 100%; height: 42px; padding: 0 13px; color: var(--text-primary); border: 1px solid var(--glass-border); border-radius: 11px; background: rgba(0,0,0,.14); transition: border-color var(--motion-fast), box-shadow var(--motion-fast); }
 .input::placeholder { color: var(--text-muted); }.input:focus { border-color: rgba(167,123,255,.55); box-shadow: 0 0 0 3px rgba(82,46,136,.14); outline:0; }
 .field { display:grid;gap:7px; }.field label{font-size:11px;color:var(--text-secondary)}.field-error{font-size:10px;color:var(--danger)}

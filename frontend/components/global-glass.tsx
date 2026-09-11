@@ -16,6 +16,10 @@ const config: Record<Variant, { displacementScale: number; blurAmount: number; s
 
 export function GlobalGlass({ children, variant = "panel", radius = 20, interactive = false, className = "", style }: { children: ReactNode; variant?: Variant; radius?: number; interactive?: boolean; className?: string; style?: CSSProperties }) {
   const values = config[interactive ? "interactive" : variant];
-  return <div className={`global-glass-fallback ${className}`} style={{ borderRadius: radius, ...style }}><LiquidGlass {...values} cornerRadius={radius} padding="0" mode="standard" className="global-glass-liquid">{children}</LiquidGlass></div>;
+  const advancedRefraction = process.env.NEXT_PUBLIC_ADVANCED_GLASS === "true";
+  return <div className={`global-glass-fallback ${className}`} style={{ borderRadius: radius, ...style }}>
+    {advancedRefraction
+      ? <LiquidGlass {...values} cornerRadius={radius} padding="0" mode="standard" className="global-glass-liquid">{children}</LiquidGlass>
+      : <div className="global-glass-content">{children}</div>}
+  </div>;
 }
-

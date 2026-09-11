@@ -9,9 +9,6 @@ test("muestra login accesible y conserva tema", async ({ page }) => {
 });
 
 test("protege las rutas internas sin sesión", async ({ page }) => {
-  await page.route("**/api/v1/auth/session/", route =>
-    route.fulfill({ status: 200, contentType: "application/json", body: '{"authenticated":false}' }),
-  );
   await page.goto("/dashboard");
   await expect(page).toHaveURL(/\/login/);
 });

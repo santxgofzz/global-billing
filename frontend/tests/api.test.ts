@@ -1,5 +1,7 @@
-import { describe, expect, it } from "vitest";
-import { formatCOP, formatDate } from "@/lib/api";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { apiFetch, formatCOP, formatDate } from "@/lib/api";
+
+afterEach(() => vi.unstubAllGlobals());
 
 describe("formatos regionales", () => {
   it("formatea pesos COP sin decimales", () => {
@@ -10,5 +12,10 @@ describe("formatos regionales", () => {
 
   it("interpreta fechas en America/Bogota", () => {
     expect(formatDate("2026-09-06T02:00:00Z")).toMatch(/05.*sept.*2026/i);
+  });
+
+  it("traduce fallos de red a un mensaje humano", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new TypeError("Failed to fetch")));
+    await expect(apiFetch("/api/v1/dashboard/")).rejects.toThrow("No pudimos conectar con el servidor");
   });
 });

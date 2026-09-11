@@ -2,8 +2,11 @@ import { AppShell } from "@/components/app-shell";
 import { Dashboard } from "@/components/dashboard";
 import { DetailPage } from "@/components/detail-pages";
 import { ModulePage } from "@/components/module-page";
+import { hasAuthenticatedSession } from "@/lib/server-auth";
+import { redirect } from "next/navigation";
 
 export default async function WorkspacePage({ params }: { params: Promise<{ path?: string[] }> }) {
+  if (!(await hasAuthenticatedSession())) redirect("/login");
   const { path = [] } = await params;
   const root = path[0] ?? "dashboard";
   const slug = root === "treasury" && path[1] === "transfers" ? "transfers" : root;
