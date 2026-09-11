@@ -41,6 +41,8 @@ services:
 
   backend:
     <<: *backend
+    ports:
+      - "127.0.0.1:8000:8000"
     healthcheck:
       test: ["CMD", "curl", "-fsS", "-H", "Host: backend", "-H", "X-Forwarded-Proto: https", "http://localhost:8000/api/health/"]
       interval: 30s

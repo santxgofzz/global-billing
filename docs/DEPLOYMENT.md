@@ -18,6 +18,11 @@
 
 No activar HSTS hasta confirmar HTTPS. Django habilita cookies Secure, HSTS y redirección SSL con `DEBUG=false`.
 
+Nginx debe enviar `/api/` directamente a Django en `127.0.0.1:8000` y el
+resto de rutas a Next.js en `127.0.0.1:3000`. No se debe encadenar
+Nginx -> Next.js -> Django para la API: el salto interno HTTP combinado con
+`SECURE_SSL_REDIRECT=true` genera una redirección hacia la misma URL HTTPS.
+
 Next conserva los slash finales de DRF mediante `skipTrailingSlashRedirect`. No retirarlo: Next y Django aplicarían normalizaciones opuestas y generarían un bucle 308/301 en `/api/*`.
 
 La refracción avanzada de `liquid-glass-react` queda desactivada por defecto en producción (`NEXT_PUBLIC_ADVANCED_GLASS=false`). El fallback mantiene glass, blur, bordes y profundidad sin alterar el tamaño de paneles financieros.
