@@ -1,7 +1,7 @@
 # Global Billing: flujos intuitivos, conectados y rápidos
 
 Fecha: 29 de septiembre de 2026  
-Estado: diseño aprobado en conversación; pendiente revisión de esta especificación  
+Estado: aprobado por el usuario el 29 de septiembre de 2026
 Repositorio: `santxgofzz/global-billing`
 
 ## 1. Propósito
